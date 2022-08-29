@@ -9,19 +9,19 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/bmiCalculator.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.post('/bmicalculator', function(req, res) {
 
-  var weight = Number(req.body.weight);
-  var height = Number(req.body.height);
+  let weight = Number(req.body.weight);
+  let height = Number(req.body.height);
 
-  var bmiCalc = weight / ((height * height) / 10000);
-  var bmiString = String(bmiCalc);
-  var bmiFinal = bmiString.slice(0, 4);
+  let bmiCalc = weight / ((height * height) / 10000);
+  let bmiString = String(bmiCalc);
+  let bmiFinal = bmiString.slice(0, 4);
 
-  res.send('Your BMI is ' + bmiFinal);
+  res.send(`Your BMI is ' + ${bmiFinal}`);
 });
 
-app.listen(3000);
+app.listen(3000, () => "Server running on port 3000");
